@@ -71,8 +71,19 @@ img
   width : 150px;
   height : 75px;
   border : none;
-  text-align : center;
   cursor : pointer;
+}
+
+.id_player_form_input:hover
+{
+  border-radius : 50px;
+  box-shadow : 0px 10px 15px -5px #C6B298, inset 0px 10px 15px -5px rgba(198,178,152,0.5);
+}
+
+.id_player_form_input:focus
+{
+  border-radius : 15px;
+  box-shadow : inset 0px 10px 15px -5px #C6B298, 0px 10px 15px -5px rgba(198,178,152,0.5);
 }
 
 #name_player, #difficulty
