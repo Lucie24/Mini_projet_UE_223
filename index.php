@@ -13,24 +13,45 @@
       <title>Document</title>
   </head>
   <body>
-    <section class="home">
-      <div class="puzzle_game_logo">
-        <h1>- Puzzle Game -</h1>
-      </div>
-      <form class="id_player" action="index.php" method="post">
-        <label for="name_player">Nom du joueur</label>
-        <input id="name_player" type="text" name="name_player" value="" placeholder="Votre nom">
+    <main>
+        <article>
+            <section class="home">
+                <header class="puzzle_game_logo">
+                    <h1>- Puzzle Game -</h1>
+                </header>
+                <form class="id_player" action="index.php" method="post">
+                    <label for="name_player">Nom du joueur</label>
+                    <input id="name_player" type="text" name="name_player" value="" placeholder="Votre nom">
 
-        <label for="difficulty">Difficulté</label>
-        <select name="difficulty" id="difficulty">
-          <option value="facile" selected="selected">Facile</option>
-          <option value="moyen">Moyen</option>
-          <option value="difficile">Difficile</option>
-        </select>
-        <div class="start">
-          <button type="button" name="jouer">Jouer</button>
-        </div>
-      </form>
-    </section>
+                    <label for="difficulty">Difficulté</label>
+                    <select name="difficulty" id="difficulty">
+                    <option value="facile" selected="selected">Facile</option>
+                    <option value="moyen">Moyen</option>
+                    <option value="difficile">Difficile</option>
+                    </select>
+                    <div class="start">
+                    <button type="button" name="jouer">Jouer</button>
+                    </div>
+                </form>
+            </section>
+
+            <section>
+                
+            </section>
+
+            <section>
+                
+            </section>
+        </article>
+
+        <footer>
+            
+        </footer>
+    </main>
+
+    <aside>
+
+    </aside>
+
   </body>
 </html>
