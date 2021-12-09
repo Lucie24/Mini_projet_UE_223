@@ -66,6 +66,13 @@ img
 {
   font-size : 1rem;
   letter-spacing : 1px;
+  background : url(../img/puzzle.png) no-repeat 50% 50%;
+  background-size : contain;
+  width : 150px;
+  height : 75px;
+  border : none;
+  text-align : center;
+  cursor : pointer;
 }
 
 #name_player, #difficulty
@@ -89,16 +96,4 @@ input:hover
 select:focus
 {
   font-weight : bold;
-}
-
-.start > input[type="submit"]
-{
-  background : url(../img/puzzle.png) no-repeat 50% 50%;
-  background-size : contain;
-  /* padding : 2rem 4rem; */
-  width : 150px;
-  height : 75px;
-  border : none;
-  text-align : center;
-  cursor : pointer;
 }

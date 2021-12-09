@@ -35,8 +35,6 @@
                     </select>
 
                     <div class="start">
-                      <!-- <label for="start">Jouer</label>
-                      <input type="image" id="start" alt="Jouer" src="assets/img/puzzle.png"> -->
                       <input type="submit" name="start" value="Jouer" class="id_player_form_input">
                     </div>
                 </form>
