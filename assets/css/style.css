@@ -16,6 +16,13 @@ body
   font-family: 'Lato', sans-serif;
 }
 
+img
+{
+  display : block;
+  width : 100%;
+  height : 100%;
+}
+
 .home
 {
   display : flex;
@@ -44,6 +51,23 @@ body
   font-weight : bold;
 }
 
+.id_player_form_label, .id_player_form_input
+{
+  font-family : 'Luckiest Guy', cursive;
+}
+
+.id_player_form_label
+{
+  font-size : 1.25rem;
+  letter-spacing : 1.25px;
+}
+
+.id_player_form_input
+{
+  font-size : 1rem;
+  letter-spacing : 1px;
+}
+
 #name_player, #difficulty
 {
   height: 2rem;
@@ -65,4 +89,16 @@ input:hover
 select:focus
 {
   font-weight : bold;
+}
+
+.start > input[type="submit"]
+{
+  background : url(../img/puzzle.png) no-repeat 50% 50%;
+  background-size : contain;
+  /* padding : 2rem 4rem; */
+  width : 150px;
+  height : 75px;
+  border : none;
+  text-align : center;
+  cursor : pointer;
 }
