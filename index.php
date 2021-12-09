@@ -35,7 +35,7 @@
                     </select>
 
                     <div class="start">
-                      <input type="submit" name="start" value="Jouer" class="id_player_form_input">
+                      <input type="submit" name="start" value="Jouer" class="id_player_form_submit">
                     </div>
                 </form>
             </section>

@@ -42,6 +42,12 @@ img
   padding : 3rem 6rem;
   background : rgba(234,210,190,255);
   border-radius : 15px;
+  box-shadow : inset 10px 10px 5px -5px #C6B298, inset -10px -10px 5px -5px #C6B298, -10px -10px 50px 10px #000000, 10px 10px 50px -5px #000000;
+}
+
+.id_player:hover
+{
+  box-shadow : inset 10px 10px 5px -5px #C6B298, inset -10px -10px 5px -5px #C6B298, -10px -10px 25px 10px #000000, 10px 10px 25px -5px #000000;
 }
 
 .id_player > .start, .id_player > label
@@ -51,7 +57,7 @@ img
   font-weight : bold;
 }
 
-.id_player_form_label, .id_player_form_input
+.id_player_form_label, .id_player_form_submit
 {
   font-family : 'Luckiest Guy', cursive;
 }
@@ -62,7 +68,7 @@ img
   letter-spacing : 1.25px;
 }
 
-.id_player_form_input
+.id_player_form_submit
 {
   font-size : 1rem;
   letter-spacing : 1px;
@@ -74,13 +80,14 @@ img
   cursor : pointer;
 }
 
-.id_player_form_input:hover
+.id_player_form_submit:hover
 {
+  background : #fbf6f2;
   border-radius : 50px;
   box-shadow : 0px 10px 15px -5px #C6B298, inset 0px 10px 15px -5px rgba(198,178,152,0.5);
 }
 
-.id_player_form_input:focus
+.id_player_form_submit:focus
 {
   border-radius : 15px;
   box-shadow : inset 0px 10px 15px -5px #C6B298, 0px 10px 15px -5px rgba(198,178,152,0.5);
@@ -99,12 +106,7 @@ input:focus, select:focus
   outline : none;
 }
 
-input:hover
+#name_player:hover, #name_player:focus, #difficulty:hover, #difficulty:focus
 {
-  background : #fbf6f2;
-}
-
-select:focus
-{
-  font-weight : bold;
+  box-shadow : 0px 10px 5px -5px #C6B298;
 }
