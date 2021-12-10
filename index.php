@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -23,7 +27,7 @@
                 <header class="puzzle_game_logo">
                     <h1>- Puzzle Game -</h1>
                 </header>
-                <form class="id_player" action="index.php" method="post">
+                <form class="id_player" action="templates/puzzle.php" method="post">
                     <label for="name_player" class="id_player_form_label">Nom du joueur</label>
                     <input id="name_player" type="text" name="name_player" value="" placeholder="Votre nom" required>
 
