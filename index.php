@@ -23,7 +23,7 @@
           <header id="header_home">
             <h1>- Puzzle Game -</h1>
           </header>
-          <form class="id_player" method="get" action="index.php">
+          <form class="id_player">
             <label for="name_player" class="id_player_form_label">Nom du joueur</label>
             <input id="name_player" type="text" name="name_player" value="" placeholder="Votre nom">
 
