@@ -44,8 +44,9 @@
             name_player.focus()
             // met une couleur de fond
             name_player.style.backgroundColor = "rgba(255, 0, 0, 0.1)";
-            // midification du placeholder
+            // défini la valeur de name_player en une chaine de caractere vide
             name_player.value = "";
+            // modification du placeholder
             name_player.setAttribute("placeholder", "");
             // return false pour quitter la fonction en cours (clickVerifForm)
             return false;

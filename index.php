@@ -23,10 +23,10 @@
           <header id="header_home">
             <h1>- Puzzle Game -</h1>
           </header>
-          <form class="id_player">
+          <form class="id_player" method="get" action="index.php">
             <label for="name_player" class="id_player_form_label">Nom du joueur</label>
             <input id="name_player" type="text" name="name_player" value="" placeholder="Votre nom">
-            
+
             <label for="difficulty" class="id_player_form_label">Difficulté</label>
             <select name="difficulty" id="difficulty">
               <option value="facile" selected="selected">Facile</option>
@@ -52,6 +52,10 @@
 
     </aside>
 
-    <script type="text/javascript" src="assets/js/script.js"></script>
+    <?php
+      var_dump($_GET);
+    ?>
+
+    <!-- <script type="text/javascript" src="assets/js/script.js"></script> -->
   </body>
 </html>
