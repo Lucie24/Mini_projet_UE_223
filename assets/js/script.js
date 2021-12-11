@@ -22,6 +22,8 @@
         }
     }
 
+    const Reg_exp = /^([A-Za-zÀ-ÖØ-öø-ÿ]{3,25})$/;
+
     // Listener pout le submit du formulaire contenu dans le section d'id home
     form.addEventListener('submit', function(e){
         // fonction au moment où le formulaire est submit
@@ -37,12 +39,13 @@
         // récupère la valeur du input d'id name_player (soit le nom du joueur renseigné dans le input)
         var name_player_value = document.getElementById('name_player').value;
         // test si la donnée (nom du joueur) respecte des conditions
-        if (name_player_value === "" || name_player_value.length > 25 || /\s/g.test(name_player_value)) {
+        if (!Reg_exp.test(name_player_value)) {
             // place le focus sur l'input
             name_player.focus()
             // met une couleur de fond
             name_player.style.backgroundColor = "rgba(255, 0, 0, 0.1)";
             // midification du placeholder
+            name_player.value = "";
             name_player.setAttribute("placeholder", "");
             // return false pour quitter la fonction en cours (clickVerifForm)
             return false;
