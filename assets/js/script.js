@@ -48,6 +48,9 @@
             name_player.value = "";
             // modification du placeholder
             name_player.setAttribute("placeholder", "");
+            //Envoi d'un message d'erreur dans le paragraphe dédié (en le vidant avant s'il contenait déjà un message)
+            document.getElementById("error_msg").innerHTML = "";
+            document.getElementById("error_msg").innerHTML = "Seulement des lettres ! :)";
             // return false pour quitter la fonction en cours (clickVerifForm)
             return false;
         }

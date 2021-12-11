@@ -26,6 +26,7 @@
           <form class="id_player" method="get" action="index.php">
             <label for="name_player" class="id_player_form_label">Nom du joueur</label>
             <input id="name_player" type="text" name="name_player" value="" placeholder="Votre nom">
+            <p id="error_msg"></p>
 
             <label for="difficulty" class="id_player_form_label">Difficulté</label>
             <select name="difficulty" id="difficulty">
