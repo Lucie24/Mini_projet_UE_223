@@ -4,7 +4,7 @@
  document.addEventListener("DOMContentLoaded", function() {
 
     // appel d'un element du DOM
-    var form = document.getElementById('home'); 
+    var form = document.getElementById('home');
 
     // création d'un tableau multidimensionnel associatif pour les données de difficulté
     var tabGame = {
@@ -21,6 +21,17 @@
             "nbr_grid" : 25
         }
     }
+
+    // if ($("#difficulty option:selected").length)
+    // {
+    //   $("#difficulty").blur();
+    // }
+    //
+    // // $("#difficulty").click(function()
+    // // {
+    // //   //$(this).style.borderRadius = "15px 15px 0 0";
+    // //   $("#difficulty").css({border-radius : "25px"});
+    // // });
 
     const Reg_exp = /^([A-Za-zÀ-ÖØ-öø-ÿ]{3,25})$/;
 
@@ -48,6 +59,9 @@
             name_player.value = "";
             // modification du placeholder
             name_player.setAttribute("placeholder", "");
+            //Envoi d'un message d'erreur dans le paragraphe dédié (en le vidant avant s'il contenait déjà un message)
+            document.getElementById("error_msg").innerHTML = "";
+            document.getElementById("error_msg").innerHTML = "Seulement des lettres ! :)";
             // return false pour quitter la fonction en cours (clickVerifForm)
             return false;
         }
@@ -121,7 +135,7 @@
         input_valid_game.setAttribute("type", "submit");
         input_valid_game.setAttribute("name", "valid");
         input_valid_game.setAttribute("value", "Valider");
-        input_valid_game.setAttribute("class", "puzzle_validation_btn");
+        input_valid_game.setAttribute("id", "puzzle_validation_btn");
     }
 
 });

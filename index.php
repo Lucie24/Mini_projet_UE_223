@@ -26,6 +26,7 @@
           <form class="id_player">
             <label for="name_player" class="id_player_form_label">Nom du joueur</label>
             <input id="name_player" type="text" name="name_player" value="" placeholder="Votre nom">
+            <p id="error_msg"></p>
 
             <label for="difficulty" class="id_player_form_label">Difficulté</label>
             <select name="difficulty" id="difficulty">
@@ -53,5 +54,6 @@
     </aside>
 
     <script type="text/javascript" src="assets/js/script.js"></script>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
   </body>
 </html>
