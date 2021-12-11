@@ -22,6 +22,17 @@
         }
     }
 
+    // if ($("#difficulty option:selected").length)
+    // {
+    //   $("#difficulty").blur();
+    // }
+    //
+    // // $("#difficulty").click(function()
+    // // {
+    // //   //$(this).style.borderRadius = "15px 15px 0 0";
+    // //   $("#difficulty").css({border-radius : "25px"});
+    // // });
+
     const Reg_exp = /^([A-Za-zÀ-ÖØ-öø-ÿ]{3,25})$/;
 
     // Listener pout le submit du formulaire contenu dans le section d'id home
