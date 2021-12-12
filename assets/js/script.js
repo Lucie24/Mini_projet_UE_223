@@ -60,7 +60,7 @@
             // modification du placeholder
             name_player.setAttribute("placeholder", "");
             //Envoi d'un message d'erreur dans le paragraphe dédié (en le vidant avant s'il contenait déjà un message)
-            document.getElementsByClassName("id_player")[0].style.padding = "1.85rem 6rem";
+            document.getElementsByClassName("id_player")[0].style.padding = "1.83rem 6rem";
             document.getElementById("error_msg").innerHTML = "";
             document.getElementById("error_msg").innerHTML = "Seulement des lettres ! :) <br> De 3 à 25 caractères !";
             // return false pour quitter la fonction en cours (clickVerifForm)

@@ -52,7 +52,7 @@ img
               inset -10px -10px 5px -5px #C6B298,
               -10px -10px 50px -5px #000000,
               10px 10px 50px -5px #000000;
-  transition : none;
+  transition-property : none;
 }
 
 .id_player:hover
