@@ -52,7 +52,6 @@ img
               inset -10px -10px 5px -5px #C6B298,
               -10px -10px 50px -5px #000000,
               10px 10px 50px -5px #000000;
-  transition-property : none;
 }
 
 .id_player:hover
@@ -61,6 +60,7 @@ img
               inset -10px -10px 5px -5px #C6B298,
               -10px -10px 25px -5px #000000,
               10px 10px 25px -5px #000000;
+  transition : padding 0s;
 }
 
 .id_player > .start, .id_player > label
@@ -162,12 +162,18 @@ input:focus, select:focus
   padding : 3rem 6rem;
   background : rgba(234,210,190,255);
   border-radius : 15px;
-  box-shadow : inset 10px 10px 5px -5px #C6B298, inset -10px -10px 5px -5px #C6B298, -10px -10px 50px 10px #000000, 10px 10px 50px -5px #000000;
+  box-shadow :inset 10px 10px 5px -5px #C6B298,
+              inset -10px -10px 5px -5px #C6B298,
+              -10px -10px 50px -5px #000000,
+              10px 10px 50px -5px #000000;
   align-items: center;
 }
 
 .puzzle:hover {
-  box-shadow : inset 10px 10px 5px -5px #C6B298, inset -10px -10px 5px -5px #C6B298, -10px -10px 25px 10px #000000, 10px 10px 25px -5px #000000;
+  box-shadow :inset 10px 10px 5px -5px #C6B298,
+              inset -10px -10px 5px -5px #C6B298,
+              -10px -10px 25px -5px #000000,
+              10px 10px 25px -5px #000000;
 }
 
 .puzzle_grid {
