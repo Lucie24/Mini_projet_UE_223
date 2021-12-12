@@ -60,8 +60,9 @@
             // modification du placeholder
             name_player.setAttribute("placeholder", "");
             //Envoi d'un message d'erreur dans le paragraphe dédié (en le vidant avant s'il contenait déjà un message)
+            document.getElementsByClassName("id_player")[0].style.padding = "1.85rem 6rem";
             document.getElementById("error_msg").innerHTML = "";
-            document.getElementById("error_msg").innerHTML = "Seulement des lettres ! :)";
+            document.getElementById("error_msg").innerHTML = "Seulement des lettres ! :) <br> De 3 à 25 caractères !";
             // return false pour quitter la fonction en cours (clickVerifForm)
             return false;
         }
@@ -108,7 +109,7 @@
 
         var header_game_id = document.getElementById("header_game");
         var title_header_game = header_game_id.querySelector("h1");
-        title_header_game.innerText = "Bonne chance "+name_player_value+" !";
+        title_header_game.innerText = "À vous de jouer "+name_player_value+" !";
 
         var div_puzzle_game = document.createElement("DIV");
         section_game.appendChild(div_puzzle_game);
