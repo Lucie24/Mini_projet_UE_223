@@ -21,7 +21,7 @@
 
         <section id="home">
           <header id="header_home">
-            <h1>- Puzzle Game -</h1>
+            <img class="logo" src="assets\img\puzzle\logo.png" alt="Puzzle Game">
           </header>
           <form class="id_player">
             <label for="name_player" class="id_player_form_label">Nom du joueur</label>

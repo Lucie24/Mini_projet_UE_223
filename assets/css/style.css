@@ -37,6 +37,15 @@ img
   justify-content : center;
 }
 
+.logo
+{
+  width : 40%;
+  height : auto;
+  margin : 4rem auto;
+  /* box-shadow : -10px -10px 25px -5px #000000,
+                10px 10px 25px -5px #000000; */
+}
+
 .id_player
 {
   display : flex;
