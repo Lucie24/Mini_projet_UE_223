@@ -118,4 +118,29 @@
         div_valid_game.append("<input type='submit' name='valid' value='Valider' id='puzzle_validation_btn' />");
     }
 
+    // Listener pout le submit du formulaire contenu dans le section d'id game
+    $('#game').on('submit', function(e){
+        // fonction au moment où le formulaire est submit
+        clickVerifValider(e);
+        return false;
+    });
+
+    function clickVerifValider(e){
+        e.preventDefault();
+
+        // supprime l'element du DOM d'id "game" avec la methode remove (soit toute la zone du formulaire de parametrage du jeu)
+        $('#game').remove();
+
+        // création de la page de victoire
+        init_win(name_player_value, article);
+
+    }
+
+    function init_win(name_player_value, article){
+        // creation d'une balise "section" dans le document
+        var section_resultat = $("<section id='results'></section>");
+        // ajout de cette balise "section" dans l'element article
+        article.append(section_resultat);
+    }
+
 });
