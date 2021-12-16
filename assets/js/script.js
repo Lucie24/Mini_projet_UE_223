@@ -133,15 +133,18 @@
         div_puzzle_game.append(div_valid_game);
 
         // le bouton de validation du puzzle
-        div_valid_game.append("<input type='submit' name='valid' value='Valider' id='puzzle_validation_btn' />");
+        div_valid_game.append("<input type='button' name='valid' value='Valider' id='puzzle_validation_btn' />");
+
+        // Listener pour le submit du formulaire contenu dans le section d'id game
+        $('#game').on('click', function(e){
+            // fonction au moment où le formulaire est submit
+            alert("TUT TUT");
+            clickVerifValider(e);
+            return false;
+        });
     }
 
-    // Listener pour le submit du formulaire contenu dans le section d'id game
-    $('#game').on('submit', function(e){
-        // fonction au moment où le formulaire est submit
-        clickVerifValider(e);
-        return false;
-    });
+
 
     function clickVerifValider(e){
         e.preventDefault();
@@ -149,8 +152,12 @@
         // supprime l'element du DOM d'id "game" avec la methode remove (soit toute la zone du formulaire de parametrage du jeu)
         $('#game').remove();
 
+        /*********************************/
+
         // création de la page de victoire
         init_win(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score);
+
+        alert("FILS DE P");
 
     }
 
@@ -178,10 +185,10 @@
 
         div_retry.append("<input type='submit' name='retry' value='Rejouer' id='retry_btn' />");
 
-        var div_menue = $("<div class='menue'></div>");
-        div_buttons.append(div_menue);
+        var div_menu = $("<div class='menu'></div>");
+        div_buttons.append(div_menu);
 
-        div_menue.append("<a href='index.php' id='menue_btn'>Accueil</a>");
+        div_menu.append("<a href='index.php' id='menu_btn'>Accueil</a>");
     }
 
     // Listener pour le submit contenu dans le section d'id results
