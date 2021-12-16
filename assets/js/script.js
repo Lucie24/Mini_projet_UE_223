@@ -39,7 +39,6 @@
         return false;
     });
 
-
     function clickVerifForm(e){
         e.preventDefault();
 
@@ -66,32 +65,42 @@
         }
 
         // requête AJAX vers envoi.php en vue d'envoyer le nom du joueur en BDD
+        // puis récupérer les données du joueur
         $.ajax({
+
             type: 'POST',
             url: 'assets/php/envoi.php',
             data: {name: JSON.stringify(name_player_value)},
             dataType: 'json'
+
+        }).done(function(data) {
+
+            // récupère les données du joueur de la réponse JSON
+            var id_joueur = data.id_joueur;
+            var nom_joueur = data.nom_joueur;
+            var meilleur_score = data.meilleur_score;
+
+            // du form récupère la valeur du select qui est sélectionné (soit la difficulte selectionne par le joueur)
+            var difficulty_valeur = $("#home select option:selected").val();
+
+            // supprime l'element du DOM d'id "home" avec la methode remove (soit toute la zone du formulaire de parametrage du jeu)
+            $('#home').remove();
+
+            /*********************************/
+
+            // appel un element du DOM avec pour id article
+            var article = $('#article');
+
+            /*********************************/
+
+            // création de la page de jeu
+            init_game(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score);
+
         });
-
-        // du form récupère la valeur du select qui est sélectionné (soit la difficulte selectionne par le joueur)
-        var difficulty_valeur = $("#home select option:selected").val();
-
-        // supprime l'element du DOM d'id "home" avec la methode remove (soit toute la zone du formulaire de parametrage du jeu)
-        $('#home').remove();
-
-        /*********************************/
-
-        // appel un element du DOM avec pour id article
-        var article = $('#article');
-
-        /*********************************/
-
-        // création de la page de jeu
-        init_game(name_player_value, difficulty_valeur, article);
 
     }
 
-    function init_game(name_player_value, difficulty_valeur, article) {
+    function init_game(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score) {
         // creation d'une balise "section" dans le document
         var section_game = $("<section id='game'></section>");
         // ajout de cette balise "section" dans l'element article
@@ -109,6 +118,8 @@
 
         var div_puzzle_game = $("<div class='puzzle'></div>");
         section_game.append(div_puzzle_game);
+
+        div_puzzle_game.append("<p>ID : #"+id_joueur+" | Joueur : "+nom_joueur+" | Meilleur score : "+meilleur_score);
 
         var div_grid_puzzle_game = $("<div class='puzzle_grid "+tabGame[difficulty_valeur]["class"]+"'></div>");
         div_puzzle_game.append(div_grid_puzzle_game);
