@@ -170,13 +170,16 @@
 
         header_win.append("<h1>Félicitations "+name_player_value+" !</h1>");
 
+        var div_buttons = $("<div class='buttons'></div>");
+        section_resultat.append(div_buttons);
+
         var div_retry = $("<div class='retry'></div>");
-        section_resultat.append(div_retry);
+        div_buttons.append(div_retry);
 
         div_retry.append("<input type='submit' name='retry' value='Rejouer' id='retry_btn' />");
 
         var div_menue = $("<div class='menue'></div>");
-        section_resultat.append(div_menue);
+        div_buttons.append(div_menue);
 
         div_menue.append("<a href='index.php' id='menue_btn'>Accueil</a>");
     }
