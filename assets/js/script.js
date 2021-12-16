@@ -138,7 +138,6 @@
         // Listener pour le submit du formulaire contenu dans le section d'id game
         $('#game').on('click', function(e){
             // fonction au moment où le formulaire est submit
-            alert("click");
             clickVerifValider(e);
             return false;
         });
@@ -155,13 +154,11 @@
         /*********************************/
 
         // création de la page de victoire
-        init_win(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score);
-
-        alert("lancement fonction clickVerifValider");
+        init_win(article);
 
     }
 
-    function init_win(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score){
+    function init_win(article){
         // creation d'une balise "section" dans le document
         var section_resultat = $("<section id='results'></section>");
         // ajout de cette balise "section" dans l'element article
@@ -175,7 +172,7 @@
         var header_win = $("<header id='header_win'></header>");
         section_resultat.append(header_win);
 
-        header_win.append("<h1>Félicitations "+name_player_value+" !</h1>");
+        header_win.append("<h1>Félicitations !</h1>");
 
         var div_buttons = $("<div class='buttons'></div>");
         section_resultat.append(div_buttons);
