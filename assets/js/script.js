@@ -138,7 +138,7 @@
         // Listener pour le submit du formulaire contenu dans le section d'id game
         $('#game').on('click', function(e){
             // fonction au moment où le formulaire est submit
-            alert("TUT TUT");
+            alert("click");
             clickVerifValider(e);
             return false;
         });
@@ -157,7 +157,7 @@
         // création de la page de victoire
         init_win(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score);
 
-        alert("FILS DE P");
+        alert("lancement fonction clickVerifValider");
 
     }
 
