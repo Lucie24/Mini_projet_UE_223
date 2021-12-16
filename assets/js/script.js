@@ -65,6 +65,13 @@
             return false;
         }
 
+        // requête AJAX vers envoi.php en vue d'envoyer le nom du joueur en BDD
+        $.ajax({
+            type: 'POST',
+            url: 'assets/php/envoi.php',
+            data: {name: JSON.stringify(name_player_value)},
+            dataType: 'json'
+        });
 
         // du form récupère la valeur du select qui est sélectionné (soit la difficulte selectionne par le joueur)
         var difficulty_valeur = $("#home select option:selected").val();
