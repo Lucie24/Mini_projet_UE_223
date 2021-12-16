@@ -32,7 +32,7 @@
 
     const Reg_exp = /^([A-Za-zÀ-ÖØ-öø-ÿ]{3,25})$/;
 
-    // Listener pout le submit du formulaire contenu dans le section d'id home
+    // Listener pour le submit du formulaire contenu dans le section d'id home
     $('#home').on('submit', function(e){
         // fonction au moment où le formulaire est submit
         clickVerifForm(e);
@@ -136,7 +136,7 @@
         div_valid_game.append("<input type='submit' name='valid' value='Valider' id='puzzle_validation_btn' />");
     }
 
-    // Listener pout le submit du formulaire contenu dans le section d'id game
+    // Listener pour le submit du formulaire contenu dans le section d'id game
     $('#game').on('submit', function(e){
         // fonction au moment où le formulaire est submit
         clickVerifValider(e);
@@ -150,15 +150,53 @@
         $('#game').remove();
 
         // création de la page de victoire
-        init_win(name_player_value, article);
+        init_win(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score);
 
     }
 
-    function init_win(name_player_value, article){
+    function init_win(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score){
         // creation d'une balise "section" dans le document
         var section_resultat = $("<section id='results'></section>");
         // ajout de cette balise "section" dans l'element article
         article.append(section_resultat);
+
+        /**
+         * Les lignes qui suivent font plus ou moins la meme chose que les deux lignes au-dessus.
+         * L'objectif est de créer une nouvelle arborescence HTML
+         */
+
+        var header_win = $("<header id='header_win'></header>");
+        section_resultat.append(header_win);
+
+        header_win.append("<h1>Félicitations "+name_player_value+" !</h1>");
+
+        var div_retry = $("<div class='retry'></div>");
+        section_resultat.append(div_retry);
+
+        div_retry.append("<input type='submit' name='retry' value='Rejouer' id='retry_btn' />");
+
+        var div_menue = $("<div class='menue'></div>");
+        section_resultat.append(div_menue);
+
+        div_menue.append("<a href='index.php' id='menue_btn'>Accueil</a>");
+    }
+
+    // Listener pour le submit contenu dans le section d'id results
+    $('#results').on('submit', function(e){
+        // fonction au moment où le formulaire est submit
+        clickVerifRejouer(e);
+        return false;
+    });
+
+    function clickVerifRejouer(e){
+        e.preventDefault();
+
+        // supprime l'element du DOM d'id "results" avec la methode remove (soit toute la zone du formulaire de parametrage du jeu)
+        $('#results').remove();
+
+        // création de la page de jeu
+        init_game(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score);
+
     }
 
 });
