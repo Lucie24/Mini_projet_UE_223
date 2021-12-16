@@ -104,7 +104,7 @@ img
   font-size : 2rem;
 }
 
-#id_player_form_submit, #puzzle_validation_btn, #menue_btn, #retry_btn
+#id_player_form_submit, #puzzle_validation_btn, #menu_btn, #retry_btn
 {
   font-size : 1rem;
   letter-spacing : 1px;
@@ -116,7 +116,7 @@ img
   cursor : pointer;
 }
 
-#id_player_form_submit:hover, #puzzle_validation_btn:hover, #menue_btn:hover, #retry_btn:hover
+#id_player_form_submit:hover, #puzzle_validation_btn:hover, #menu_btn:hover, #retry_btn:hover
 {
   background : #fbf6f2;
   border-radius : 50px;
