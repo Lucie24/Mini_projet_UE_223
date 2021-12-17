@@ -135,9 +135,9 @@
         // le bouton de validation du puzzle
         div_valid_game.append("<input type='button' name='valid' value='Valider' id='puzzle_validation_btn' />");
 
-        // Listener pour le submit du formulaire contenu dans le section d'id game
+        // Listener pour le bouton contenu dans le section d'id game
         $('#puzzle_validation_btn').on('click', function(e){
-            // fonction au moment où le formulaire est submit
+            // fonction au moment où le bouton est cliqué
             clickVerifValider(e, name_player_value);
             return false;
         });
@@ -175,23 +175,28 @@
 
         header_win.append("<h1>Félicitations " +name_player_value+ " !</h1>");
 
+        var div_container = $("<div class='container'></div>");
+        section_resultat.append(div_container);
+
+        //TODO mettre une div pour les tableaux ici
+
         var div_buttons = $("<div class='buttons'></div>");
-        section_resultat.append(div_buttons);
+        div_container.append(div_buttons);
 
         var div_retry = $("<div class='retry'></div>");
         div_buttons.append(div_retry);
 
-        div_retry.append("<input type='submit' name='retry' value='Rejouer' id='retry_btn' />");
+        div_retry.append("<input type='button' name='retry' value='Rejouer' id='retry_btn' />");
 
         var div_menu = $("<div class='menu'></div>");
         div_buttons.append(div_menu);
 
-        div_menu.append("<a href='index.php' id='menu_btn'>Accueil</a>");
+        div_menu.append("<input type='button' name='valid' value='Accueil' id='menu_btn' action='index.php'/>");
     }
 
-    // Listener pour le submit contenu dans le section d'id results
-    $('#results').on('submit', function(e){
-        // fonction au moment où le formulaire est submit
+    // Listener pour le bouton contenu dans le section d'id results
+    $('#results').on('click', function(e){
+        // fonction au moment où le formulaire est bouton
         clickVerifRejouer(e);
         return false;
     });
@@ -203,7 +208,7 @@
         $('#results').remove();
 
         // création de la page de jeu
-        init_game(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score);
+        init_game();
 
     }
 
