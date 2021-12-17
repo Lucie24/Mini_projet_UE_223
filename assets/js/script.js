@@ -144,7 +144,7 @@
         /* Début du code pour les pièces */
 
         for (let i = 0; i < tabGame[difficulty_valeur]["nbr_grid"]; i++) {
-            var div_piece = $("<div class='piece' draggable='true' style='background : center / contain no-repeat url("+tabGame[difficulty_valeur]["files"]+i+".png);'></div>");
+            var div_piece = $("<div class='piece' draggable='true' id="+i+" style='background : center / contain no-repeat url("+tabGame[difficulty_valeur]["files"]+i+".png);'></div>");
             div_puzzle_pieces.append(div_piece);
         }
 
@@ -152,8 +152,9 @@
         var $el1 = $('.piece');
         var $el2 = $('.puzzle_grid_piece');
 
-
+        var essais = 0;
         var $el6 = null;
+        var pourcentage = 100;
         $el1.on('dragstart', function(){
 
             $(this).attr("class", "piece");
@@ -184,20 +185,28 @@
                 e.preventDefault();
             });
 
-
             $(vide).on('drop', function() {
 
-                index = ($(vide).index());
+                index = $(vide).index();
 
                 if ($($el2)[index].children.length == 1) {
                     return false;
                 }
                 else {
                     this.append($el6);
+                    essais++;
+
+                    if (essais > tabGame[difficulty_valeur]["nbr_grid"]) {
+            
+                        if (pourcentage == 0) {
+                            pourcentage = 0;
+                        }
+                        else {
+                            pourcentage--;
+                        }
+                    }
+                    
                 }
-
-
-
 
             });
 
@@ -207,14 +216,14 @@
         // Listener pour le bouton contenu dans le section d'id game
         $('#puzzle_validation_btn').on('click', function(e){
             // fonction au moment où le bouton est cliqué
-            clickVerifValider(e, name_player_value);
+            clickVerifValider(e, name_player_value, pourcentage);
             return false;
         });
     }
 
 
 
-    function clickVerifValider(e, name_player_value){
+    function clickVerifValider(e, name_player_value, pourcentage){
         e.preventDefault();
 
         // /*********************************/
@@ -224,11 +233,11 @@
         // supprime l'element du DOM d'id "game" avec la methode remove (soit toute la zone du formulaire de parametrage du jeu)
         $('#game').remove();
         // création de la page de victoire
-        init_win(article, name_player_value);
+        init_win(article, name_player_value, pourcentage);
 
     }
 
-    function init_win(article, name_player_value){
+    function init_win(article, name_player_value, pourcentage){
         // creation d'une balise "section" dans le document
         var section_resultat = $("<section id='results'></section>");
         // ajout de cette balise "section" dans l'element article
@@ -242,7 +251,7 @@
         var header_win = $("<header id='header_win'></header>");
         section_resultat.append(header_win);
 
-        header_win.append("<h1>Félicitations " +name_player_value+ " !</h1>");
+        header_win.append("<h1>Félicitations " +name_player_value+"<br>Votre score est de : "+pourcentage+"% !</h1>");
 
         var div_container = $("<div class='container'></div>");
         section_resultat.append(div_container);
