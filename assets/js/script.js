@@ -192,23 +192,29 @@
         div_buttons.append(div_menu);
 
         div_menu.append("<input type='button' name='valid' value='Accueil' id='menu_btn' action='index.php'/>");
-    }
 
-    // Listener pour le bouton contenu dans le section d'id results
-    $('#results').on('click', function(e){
-        // fonction au moment où le formulaire est bouton
-        clickVerifRejouer(e);
-        return false;
-    });
+        //Lancement des fonctions pour afficher la page de jeu
+
+        // Listener pour le bouton contenu dans le section d'id results
+        $('#retry_btn').on('click', function(e){
+            // fonction au moment où le formulaire est bouton
+            clickVerifRejouer(e);
+            return false;
+        });
+    }
 
     function clickVerifRejouer(e){
         e.preventDefault();
+
+        // /*********************************/
+        // appel un element du DOM avec pour id article
+        var article = $('#article');
 
         // supprime l'element du DOM d'id "results" avec la methode remove (soit toute la zone du formulaire de parametrage du jeu)
         $('#results').remove();
 
         // création de la page de jeu
-        init_game();
+        init_game(article);
 
     }
 
