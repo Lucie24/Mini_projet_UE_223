@@ -7,15 +7,21 @@
     var tabGame = {
         "facile" : {
            "class" : "puzzle_grid_1",
-           "nbr_grid" : 9
+           "nbr_grid" : 9,
+           "size_class" : "piece-facile",
+           "files" : "assets/img/puzzle/3x3/"
         },
         "moyen" : {
             "class" : "puzzle_grid_2",
-            "nbr_grid" : 16
+            "nbr_grid" : 16,
+            "size_class" : "piece-moyen",
+            "files" : "assets/img/puzzle/4x4/"
         },
         "difficile" : {
             "class" : "puzzle_grid_3",
-            "nbr_grid" : 25
+            "nbr_grid" : 25,
+            "size_class" : "piece-difficile",
+            "files" : "assets/img/puzzle/5x5/"
         }
     }
 
@@ -90,6 +96,9 @@
         // ajout de cette balise "section" dans l'element article
         article.append(section_game);
 
+        var div_puzzle_pieces = $("<div id='puzzle-pieces'></div>");
+        section_game.append(div_puzzle_pieces);
+
         /**
          * Les lignes qui suivent font plus ou moins la meme chose que les deux lignes au-dessus.
          * L'objectif est de créer une nouvelle arborescence HTML
@@ -116,6 +125,77 @@
 
         // le bouton de validation du puzzle
         div_valid_game.append("<input type='submit' name='valid' value='Valider' id='puzzle_validation_btn' />");
+
+
+        /* Code test */
+
+        for (let i = 0; i < tabGame[difficulty_valeur]["nbr_grid"]; i++) {
+            var div_piece = $("<div class='piece' draggable='true' style='background : center / contain no-repeat url("+tabGame[difficulty_valeur]["files"]+(i+1)+".png);'></div>");
+            div_puzzle_pieces.append(div_piece);
+        }
+    
+        
+        var $el1 = $('.piece');
+        var $el2 = $('.puzzle_grid_piece');
+        
+
+        var $el6 = null;
+        $el1.on('dragstart', function(){
+            
+            $(this).attr("class", "piece style-piece");
+
+            $el6 = this;
+
+            setTimeout(() => {
+                $(this).attr("class", "invisible");
+            }, 0)
+
+        });
+
+        $el1.on('dragend', function(){
+            $(this).attr("class", tabGame[difficulty_valeur]["size_class"]);
+        });
+
+
+        var index = null;
+        for (const vide of $el2) {
+
+
+
+            $(vide).on('dragover', function(e) {
+                e.preventDefault();
+            });
+            
+            $(vide).on('dragenter', function(e) {
+                e.preventDefault();
+            });
+            
+
+            $(vide).on('drop', function() {
+
+                index = ($(vide).index());
+
+                if ($($el2)[index].children.length == 1) {
+                    console.log('La pièce est déjà la');
+                    return false;
+                }
+                else {
+                    console.log('On ajoute la pièce')
+                    this.append($el6);
+                }
+
+                console.log($($el2)[0].children.length == 0)
+
+                console.log(index)
+
+
+
+
+            });
+
+
+        }
+
     }
 
 });

@@ -203,3 +203,44 @@ input:focus, select:focus
   flex-basis: 72px;
   height: 72px;
 }
+
+#puzzle-pieces{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  min-width: 15rem;
+  height: 100vh;
+  right: 0;
+  position: absolute;
+  overflow-y: auto;
+}
+
+#puzzle-pieces *{
+  margin: 1rem 0;
+}
+
+.piece{
+  width: 7.3rem;
+  height: 7.4rem;
+}
+
+.piece-facile {
+  width: 7.3rem;
+  height: 7.4rem;
+}
+
+.piece-moyen {
+  width: 5rem;
+  height: 5rem;
+}
+
+.piece-difficile {
+  width: 4rem;
+  height: 4rem;
+}
+
+.style-piece{
+  transition-property: none;
+  border: solid 2px black;
+}
