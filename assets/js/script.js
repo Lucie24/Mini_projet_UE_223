@@ -7,15 +7,18 @@
     var tabGame = {
         "facile" : {
            "class" : "puzzle_grid_1",
-           "nbr_grid" : 9
+           "nbr_grid" : 9,
+           "files" : "assets/img/puzzle/3x3/"
         },
         "moyen" : {
             "class" : "puzzle_grid_2",
-            "nbr_grid" : 16
+            "nbr_grid" : 16,
+            "files" : "assets/img/puzzle/4x4/"
         },
         "difficile" : {
             "class" : "puzzle_grid_3",
-            "nbr_grid" : 25
+            "nbr_grid" : 25,
+            "files" : "assets/img/puzzle/5x5/"
         }
     }
 
@@ -106,6 +109,9 @@
         // ajout de cette balise "section" dans l'element article
         article.append(section_game);
 
+        var div_puzzle_pieces = $("<div id='puzzle-pieces'></div>");
+        section_game.append(div_puzzle_pieces);
+
         /**
          * Les lignes qui suivent font plus ou moins la meme chose que les deux lignes au-dessus.
          * L'objectif est de créer une nouvelle arborescence HTML
@@ -134,6 +140,75 @@
 
         // le bouton de validation du puzzle
         div_valid_game.append("<input type='button' name='valid' value='Valider' id='puzzle_validation_btn' />");
+
+        /* Début du code pour les pièces */
+
+        for (let i = 0; i < tabGame[difficulty_valeur]["nbr_grid"]; i++) {
+            var div_piece = $("<div class='piece' draggable='true' style='background : center / contain no-repeat url("+tabGame[difficulty_valeur]["files"]+i+".png);'></div>");
+            div_puzzle_pieces.append(div_piece);
+        }
+    
+        
+        var $el1 = $('.piece');
+        var $el2 = $('.puzzle_grid_piece');
+        
+
+        var $el6 = null;
+        $el1.on('dragstart', function(){
+            
+            $(this).attr("class", "piece style-piece");
+
+            $el6 = this;
+
+            setTimeout(() => {
+                $(this).attr("class", "invisible");
+            }, 0)
+
+        });
+
+        $el1.on('dragend', function(){
+            $(this).attr("class", 'piece');
+        });
+
+
+        var index = null;
+        for (const vide of $el2) {
+
+
+
+            $(vide).on('dragover', function(e) {
+                e.preventDefault();
+            });
+            
+            $(vide).on('dragenter', function(e) {
+                e.preventDefault();
+            });
+            
+
+            $(vide).on('drop', function() {
+
+                index = ($(vide).index());
+
+                if ($($el2)[index].children.length == 1) {
+                    console.log('La pièce est déjà la');
+                    return false;
+                }
+                else {
+                    console.log('On ajoute la pièce')
+                    this.append($el6);
+                }
+
+                console.log($($el2)[0].children.length == 0)
+
+                console.log(index)
+
+
+
+
+            });
+
+
+        }
 
         // Listener pour le bouton contenu dans le section d'id game
         $('#puzzle_validation_btn').on('click', function(e){
@@ -192,29 +267,25 @@
         div_buttons.append(div_menu);
 
         div_menu.append("<input type='button' name='valid' value='Accueil' id='menu_btn' action='index.php'/>");
-
-        //Lancement des fonctions pour afficher la page de jeu
-
-        // Listener pour le bouton contenu dans le section d'id results
-        $('#retry_btn').on('click', function(e){
-            // fonction au moment où le formulaire est bouton
-            clickVerifRejouer(e);
-            return false;
-        });
     }
+
+    // Listener pour le bouton contenu dans le section d'id results
+    $('#results').on('click', function(e){
+        // fonction au moment où le formulaire est bouton
+        clickVerifRejouer(e);
+        return false;
+    });
 
     function clickVerifRejouer(e){
         e.preventDefault();
-
-        // /*********************************/
-        // appel un element du DOM avec pour id article
-        var article = $('#article');
 
         // supprime l'element du DOM d'id "results" avec la methode remove (soit toute la zone du formulaire de parametrage du jeu)
         $('#results').remove();
 
         // création de la page de jeu
-        init_game(article);
+        init_game();
+        div_valid_game.append("<input type='submit' name='valid' value='Valider' id='puzzle_validation_btn' />");
+
 
     }
 
