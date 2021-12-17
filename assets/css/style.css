@@ -257,3 +257,37 @@ input:focus, select:focus
 {
   display: flex;
 }
+
+
+/* CSS des pièces */
+
+
+#puzzle-pieces{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  min-width: 15rem;
+  height: 100vh;
+  right: 0;
+  position: absolute;
+  overflow-y: auto;
+}
+
+#puzzle-pieces *{
+  margin: 1rem 0;
+}
+
+.piece{
+  width: 7.5rem;
+  height: 7.5rem;
+}
+
+.puzzle_grid_piece *{
+  width: 100%;
+  height: 100%;
+}
+
+.style-piece{
+  border: solid 2px black;
+}
