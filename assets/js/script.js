@@ -266,7 +266,10 @@
         var div_menu = $("<div class='menu'></div>");
         div_buttons.append(div_menu);
 
-        div_menu.append("<input type='button' name='valid' value='Accueil' id='menu_btn' action='index.php'/>");
+        var a_link = $("<a href='index.php'></a>"); 
+        div_menu.append(a_link);
+
+        a_link.append("<input type='button' name='valid' value='Accueil' id='menu_btn'/>");
     }
 
     // Listener pour le bouton contenu dans le section d'id results
