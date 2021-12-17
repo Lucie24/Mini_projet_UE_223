@@ -147,27 +147,35 @@
             var div_piece = $("<div class='piece' draggable='true' style='background : center / contain no-repeat url("+tabGame[difficulty_valeur]["files"]+i+".png);'></div>");
             div_puzzle_pieces.append(div_piece);
         }
-    
-        
+
+
         var $el1 = $('.piece');
         var $el2 = $('.puzzle_grid_piece');
-        
+
 
         var $el6 = null;
+        var drop = false;
         $el1.on('dragstart', function(){
-            
-            $(this).attr("class", "piece style-piece");
+
+            $(this).attr("class", "piece");
 
             $el6 = this;
 
             setTimeout(() => {
                 $(this).attr("class", "invisible");
-            }, 0)
+            }, 0);
 
         });
 
         $el1.on('dragend', function(){
-            $(this).attr("class", 'piece');
+        if (drop) {
+             $(this).attr("class", 'puzzle_grid_piece');
+             drop = false;
+             console.log("false dragend");
+         }
+        else {
+             $(this).attr("class", 'piece');
+         }
         });
 
 
@@ -179,11 +187,13 @@
             $(vide).on('dragover', function(e) {
                 e.preventDefault();
             });
-            
+
             $(vide).on('dragenter', function(e) {
                 e.preventDefault();
+                console.log("true dragenter");
+                drop = true;
             });
-            
+
 
             $(vide).on('drop', function() {
 
@@ -191,16 +201,14 @@
 
                 if ($($el2)[index].children.length == 1) {
                     console.log('La pièce est déjà la');
+                    drop = true;
+                    console.log("true drop");
                     return false;
                 }
                 else {
-                    console.log('On ajoute la pièce')
+                    console.log('On ajoute la pièce');
                     this.append($el6);
                 }
-
-                console.log($($el2)[0].children.length == 0)
-
-                console.log(index)
 
 
 
@@ -266,7 +274,7 @@
         var div_menu = $("<div class='menu'></div>");
         div_buttons.append(div_menu);
 
-        var a_link = $("<a href='index.php'></a>"); 
+        var a_link = $("<a href='index.php'></a>");
         div_menu.append(a_link);
 
         a_link.append("<input type='button' name='valid' value='Accueil' id='menu_btn'/>");
