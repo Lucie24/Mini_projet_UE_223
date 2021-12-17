@@ -270,14 +270,14 @@
         div_menu.append(a_link);
 
         a_link.append("<input type='button' name='valid' value='Accueil' id='menu_btn'/>");
-    }
 
-    // Listener pour le bouton contenu dans le section d'id results
-    $('#retry_btn').on('click', function(e){
-        // fonction au moment où le formulaire est bouton
-        clickVerifRejouer(e);
-        return false;
-    });
+        // Listener pour le bouton contenu dans le section d'id results
+        $('#retry_btn').on('click', function(e){
+            // fonction au moment où le formulaire est bouton
+            clickVerifRejouer(e);
+            return false;
+        });
+    }
 
     function clickVerifRejouer(e){
         e.preventDefault();
