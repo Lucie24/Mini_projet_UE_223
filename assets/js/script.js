@@ -8,19 +8,16 @@
         "facile" : {
            "class" : "puzzle_grid_1",
            "nbr_grid" : 9,
-           "size_class" : "piece-facile",
            "files" : "assets/img/puzzle/3x3/"
         },
         "moyen" : {
             "class" : "puzzle_grid_2",
             "nbr_grid" : 16,
-            "size_class" : "piece-moyen",
             "files" : "assets/img/puzzle/4x4/"
         },
         "difficile" : {
             "class" : "puzzle_grid_3",
             "nbr_grid" : 25,
-            "size_class" : "piece-difficile",
             "files" : "assets/img/puzzle/5x5/"
         }
     }
@@ -153,7 +150,7 @@
         });
 
         $el1.on('dragend', function(){
-            $(this).attr("class", tabGame[difficulty_valeur]["size_class"]);
+            $(this).attr("class", 'piece');
         });
 
 
