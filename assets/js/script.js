@@ -270,7 +270,7 @@
     }
 
     // Listener pour le bouton contenu dans le section d'id results
-    $('#results').on('click', function(e){
+    $('#retry_btn').on('click', function(e){
         // fonction au moment où le formulaire est bouton
         clickVerifRejouer(e);
         return false;
@@ -279,14 +279,15 @@
     function clickVerifRejouer(e){
         e.preventDefault();
 
+        // /*********************************/
+        // appel un element du DOM avec pour id article
+        var article = $('#article');
+
         // supprime l'element du DOM d'id "results" avec la methode remove (soit toute la zone du formulaire de parametrage du jeu)
         $('#results').remove();
 
         // création de la page de jeu
-        init_game();
-        div_valid_game.append("<input type='submit' name='valid' value='Valider' id='puzzle_validation_btn' />");
-
-
+        init_game(article);
     }
 
 });
