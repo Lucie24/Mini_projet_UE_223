@@ -136,29 +136,30 @@
         div_valid_game.append("<input type='button' name='valid' value='Valider' id='puzzle_validation_btn' />");
 
         // Listener pour le submit du formulaire contenu dans le section d'id game
-        $('#game').on('click', function(e){
+        $('#puzzle_validation_btn').on('click', function(e){
             // fonction au moment où le formulaire est submit
-            clickVerifValider(e);
+            clickVerifValider(e, name_player_value);
             return false;
         });
     }
 
 
 
-    function clickVerifValider(e){
+    function clickVerifValider(e, name_player_value){
         e.preventDefault();
+
+        // /*********************************/
+        // appel un element du DOM avec pour id article
+        var article = $('#article');
 
         // supprime l'element du DOM d'id "game" avec la methode remove (soit toute la zone du formulaire de parametrage du jeu)
         $('#game').remove();
-
-        /*********************************/
-
         // création de la page de victoire
-        init_win(article);
+        init_win(article, name_player_value);
 
     }
 
-    function init_win(article){
+    function init_win(article, name_player_value){
         // creation d'une balise "section" dans le document
         var section_resultat = $("<section id='results'></section>");
         // ajout de cette balise "section" dans l'element article
@@ -172,7 +173,7 @@
         var header_win = $("<header id='header_win'></header>");
         section_resultat.append(header_win);
 
-        header_win.append("<h1>Félicitations !</h1>");
+        header_win.append("<h1>Félicitations " +name_player_value+ " !</h1>");
 
         var div_buttons = $("<div class='buttons'></div>");
         section_resultat.append(div_buttons);
