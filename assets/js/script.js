@@ -154,7 +154,6 @@
 
 
         var $el6 = null;
-        var drop = false;
         $el1.on('dragstart', function(){
 
             $(this).attr("class", "piece");
@@ -168,14 +167,7 @@
         });
 
         $el1.on('dragend', function(){
-        if (drop) {
-             $(this).attr("class", 'puzzle_grid_piece');
-             drop = false;
-             console.log("false dragend");
-         }
-        else {
-             $(this).attr("class", 'piece');
-         }
+            $(this).attr("class", "piece");
         });
 
 
@@ -190,8 +182,6 @@
 
             $(vide).on('dragenter', function(e) {
                 e.preventDefault();
-                console.log("true dragenter");
-                drop = true;
             });
 
 
@@ -200,13 +190,9 @@
                 index = ($(vide).index());
 
                 if ($($el2)[index].children.length == 1) {
-                    console.log('La pièce est déjà la');
-                    drop = true;
-                    console.log("true drop");
                     return false;
                 }
                 else {
-                    console.log('On ajoute la pièce');
                     this.append($el6);
                 }
 
