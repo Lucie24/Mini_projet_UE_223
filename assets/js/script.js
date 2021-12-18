@@ -149,6 +149,24 @@
         }
 
 
+        // tri au hasard des pièces dans la liste
+        $.fn.random = function() {
+            $.each(this.get(), function(index, el) {
+                var $el = $(el);
+                var $find = $el.children();
+
+                $find.sort(function() {
+                    return 0.5 - Math.random();
+                });
+
+                $el.empty();
+                $find.appendTo($el);
+            });
+        };
+
+        $(div_puzzle_pieces).random();
+        
+
         var $el1 = $('.piece');
         var $el2 = $('.puzzle_grid_piece');
 
