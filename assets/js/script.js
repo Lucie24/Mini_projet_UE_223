@@ -125,7 +125,7 @@
         var div_puzzle_game = $("<div class='puzzle'></div>");
         section_game.append(div_puzzle_game);
 
-        div_puzzle_game.append("<p>ID : #"+id_joueur+" | Joueur : "+nom_joueur+" | Meilleur score : "+meilleur_score+"</p>");
+        div_puzzle_game.append("<p>ID : #"+id_joueur+" | Joueur : "+nom_joueur+" | Meilleur score : "+meilleur_score+"%</p>");
 
         var div_grid_puzzle_game = $("<div class='puzzle_grid "+tabGame[difficulty_valeur]["class"]+"'></div>");
         div_puzzle_game.append(div_grid_puzzle_game);
@@ -288,7 +288,7 @@
             dataType: 'json'
         }).done(function(data) {
             for (var i = 0; i < data.length; i++) {
-                var leaderboard_row = $("<tr><td>#"+data[i].id_joueur+"</td><td>"+data[i].nom_joueur+"</td><td>"+data[i].meilleur_score+"%</td></tr>");
+                var leaderboard_row = $("<tr><td class='cell'>#"+data[i].id_joueur+"</td><td class='cell'>"+data[i].nom_joueur+"</td><td class='cell'>"+data[i].meilleur_score+"%</td></tr>");
                 leaderboard_body.append(leaderboard_row);
             }
         });

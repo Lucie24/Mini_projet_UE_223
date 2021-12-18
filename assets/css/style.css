@@ -288,3 +288,6 @@ input:focus, select:focus
   display: flex;
 }
 
+.cell {
+  text-align: center;
+}
