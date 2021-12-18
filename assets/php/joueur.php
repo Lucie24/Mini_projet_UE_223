@@ -2,7 +2,7 @@
 
     ini_set('display_errors', 'Off');
     ini_set('log_errors', 'On');
-    ini_set('error_log', dirname(__file__).'log.txt');
+    ini_set('error_log', 'log.txt');
 	
 	// Parametres de connexion
 	$serveur  = "localhost:3306";
@@ -116,10 +116,5 @@
 	);
 
 	echo json_encode($donnees_joueur);
-
-	// TODO : SQL remplacer le meilleur score du joueur dans la BDD par son nouveau score 
-	// seulement s'il est plus élevé (sûrement sur un autre fichier.php)
-	// (et donc une autre requête ajax dans le script, déclenchée par un événement à la fin du jeu
-	// pour récupérer le nouveau score)
 
 ?>

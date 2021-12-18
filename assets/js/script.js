@@ -72,7 +72,7 @@
         $.ajax({
 
             type: 'POST',
-            url: 'assets/php/envoi.php',
+            url: 'assets/php/joueur.php',
             data: {name: JSON.stringify(name_player_value)},
             dataType: 'json'
 
@@ -125,7 +125,7 @@
         var div_puzzle_game = $("<div class='puzzle'></div>");
         section_game.append(div_puzzle_game);
 
-        div_puzzle_game.append("<p>ID : #"+id_joueur+" | Joueur : "+nom_joueur+" | Meilleur score : "+meilleur_score);
+        div_puzzle_game.append("<p>ID : #"+id_joueur+" | Joueur : "+nom_joueur+" | Meilleur score : "+meilleur_score+"</p>");
 
         var div_grid_puzzle_game = $("<div class='puzzle_grid "+tabGame[difficulty_valeur]["class"]+"'></div>");
         div_puzzle_game.append(div_grid_puzzle_game);
@@ -204,17 +204,30 @@
 
         }
 
+        // SCORE BIDON EN DUR
+        var score = 50;
+
         // Listener pour le bouton contenu dans le section d'id game
         $('#puzzle_validation_btn').on('click', function(e){
+            // si le score est un nouveau record on le retient et une requête AJAX sur score.php l'envoie en BDD
+            if (score > meilleur_score) {
+                meilleur_score = score;
+                $.ajax({
+                    type: 'POST',
+                    url: 'assets/php/score.php',
+                    data: {id_joueur: id_joueur, meilleur_score: JSON.stringify(meilleur_score)},
+                    dataType: 'json'
+                });
+            }
             // fonction au moment où le bouton est cliqué
-            clickVerifValider(e, name_player_value);
+            clickVerifValider(e, name_player_value, score, meilleur_score);
             return false;
         });
     }
 
 
 
-    function clickVerifValider(e, name_player_value){
+    function clickVerifValider(e, name_player_value, score, meilleur_score){
         e.preventDefault();
 
         // /*********************************/
@@ -224,11 +237,11 @@
         // supprime l'element du DOM d'id "game" avec la methode remove (soit toute la zone du formulaire de parametrage du jeu)
         $('#game').remove();
         // création de la page de victoire
-        init_win(article, name_player_value);
+        init_win(article, name_player_value, score, meilleur_score);
 
     }
 
-    function init_win(article, name_player_value){
+    function init_win(article, name_player_value, score, meilleur_score){
         // creation d'une balise "section" dans le document
         var section_resultat = $("<section id='results'></section>");
         // ajout de cette balise "section" dans l'element article
@@ -247,7 +260,24 @@
         var div_container = $("<div class='container'></div>");
         section_resultat.append(div_container);
 
-        //TODO mettre une div pour les tableaux ici
+        div_container.append("<p>Score : "+score+"<br/>Meilleur score : "+meilleur_score+"<br/><br/>Leaderboard :</p>");
+
+        var leaderboard = $("<table class='leaderboard'><thead><tr><th>ID</th><th>Nom</th><th>Meilleur score</th></thead></table>");
+        div_container.append(leaderboard);
+
+        var leaderboard_body = $("<tbody></tbody>");
+        leaderboard.append(leaderboard_body);
+
+        // récupérer le leaderboard dans la BDD pour affichage par une requête AJAX sur leaderboard.php
+        $.ajax({
+            url: 'assets/php/leaderboard.php',
+            dataType: 'json'
+        }).done(function(data) {
+            for (var i = 0; i < data.length; i++) {
+                var leaderboard_row = $("<tr><td>#"+data[i].id_joueur+"</td><td>"+data[i].nom_joueur+"</td><td>"+data[i].meilleur_score+"</td></tr>");
+                leaderboard_body.append(leaderboard_row);
+            }
+        });
 
         var div_buttons = $("<div class='buttons'></div>");
         div_container.append(div_buttons);
