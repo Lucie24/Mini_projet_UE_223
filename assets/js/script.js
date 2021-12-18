@@ -227,11 +227,15 @@
                     url: 'assets/php/score.php',
                     data: {id_joueur: id_joueur, meilleur_score: JSON.stringify(meilleur_score)},
                     dataType: 'json'
+                }).done(function() {
+                    clickVerifValider(e, name_player_value, pourcentage, difficulty_valeur, id_joueur, nom_joueur, meilleur_score);
+                    return false;
                 });
+            } else {
+                // fonction au moment où le bouton est cliqué
+                clickVerifValider(e, name_player_value, pourcentage, difficulty_valeur, id_joueur, nom_joueur, meilleur_score);
+                return false;
             }
-            // fonction au moment où le bouton est cliqué
-            clickVerifValider(e, name_player_value, pourcentage, difficulty_valeur, id_joueur, nom_joueur, meilleur_score);
-            return false;
         });
     }
 
@@ -270,7 +274,7 @@
         var div_container = $("<div class='container'></div>");
         section_resultat.append(div_container);
 
-        div_container.append("<p>Score : "+pourcentage+"<br/>Meilleur score : "+meilleur_score+"<br/><br/>Leaderboard :</p>");
+        div_container.append("<p>Score : "+pourcentage+"%<br/>Meilleur score : "+meilleur_score+"%<br/><br/>Leaderboard :</p>");
 
         var leaderboard = $("<table class='leaderboard'><thead><tr><th>ID</th><th>Nom</th><th>Meilleur score</th></thead></table>");
         div_container.append(leaderboard);
@@ -284,7 +288,7 @@
             dataType: 'json'
         }).done(function(data) {
             for (var i = 0; i < data.length; i++) {
-                var leaderboard_row = $("<tr><td>#"+data[i].id_joueur+"</td><td>"+data[i].nom_joueur+"</td><td>"+data[i].meilleur_score+"</td></tr>");
+                var leaderboard_row = $("<tr><td>#"+data[i].id_joueur+"</td><td>"+data[i].nom_joueur+"</td><td>"+data[i].meilleur_score+"%</td></tr>");
                 leaderboard_body.append(leaderboard_row);
             }
         });

@@ -63,7 +63,7 @@
 	$_leaderboard = array();
 
 	// remplir ce tableau avec les données des 3 meilleurs joueurs
-	for ($i = 0; $i < 3; $i++) {
+	for ($i = 0; $i < 3 && $i < count($_joueurs); $i++) {
 		array_push($_leaderboard, $_joueurs[$i]);
 	}
 
