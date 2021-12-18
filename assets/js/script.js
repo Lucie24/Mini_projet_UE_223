@@ -216,14 +216,14 @@
         // Listener pour le bouton contenu dans le section d'id game
         $('#puzzle_validation_btn').on('click', function(e){
             // fonction au moment où le bouton est cliqué
-            clickVerifValider(e, name_player_value, pourcentage);
+            clickVerifValider(e, name_player_value, pourcentage, difficulty_valeur, id_joueur, nom_joueur, meilleur_score);
             return false;
         });
     }
 
 
 
-    function clickVerifValider(e, name_player_value, pourcentage){
+    function clickVerifValider(e, name_player_value, pourcentage, difficulty_valeur, id_joueur, nom_joueur, meilleur_score){
         e.preventDefault();
 
         // /*********************************/
@@ -233,11 +233,11 @@
         // supprime l'element du DOM d'id "game" avec la methode remove (soit toute la zone du formulaire de parametrage du jeu)
         $('#game').remove();
         // création de la page de victoire
-        init_win(article, name_player_value, pourcentage);
+        init_win(article, name_player_value, pourcentage, difficulty_valeur, id_joueur, nom_joueur, meilleur_score);
 
     }
 
-    function init_win(article, name_player_value, pourcentage){
+    function init_win(article, name_player_value, pourcentage, difficulty_valeur, id_joueur, nom_joueur, meilleur_score){
         // creation d'une balise "section" dans le document
         var section_resultat = $("<section id='results'></section>");
         // ajout de cette balise "section" dans l'element article
@@ -277,12 +277,12 @@
         // Listener pour le bouton contenu dans le section d'id results
         $('#retry_btn').on('click', function(e){
             // fonction au moment où le formulaire est bouton
-            clickVerifRejouer(e);
+            clickVerifRejouer(e, name_player_value, difficulty_valeur, id_joueur, nom_joueur, meilleur_score);
             return false;
         });
     }
 
-    function clickVerifRejouer(e){
+    function clickVerifRejouer(e, name_player_value, difficulty_valeur, id_joueur, nom_joueur, meilleur_score){
         e.preventDefault();
 
         // /*********************************/
@@ -293,7 +293,7 @@
         $('#results').remove();
 
         // création de la page de jeu
-        init_game(article);
+        init_game(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score);
     }
 
 });
