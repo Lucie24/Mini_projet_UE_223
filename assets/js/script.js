@@ -227,7 +227,7 @@
                     url: 'assets/php/score.php',
                     data: {id_joueur: id_joueur, meilleur_score: JSON.stringify(meilleur_score)},
                     dataType: 'json'
-                }).done(function() {
+                }).always(function() {
                     clickVerifValider(e, name_player_value, pourcentage, difficulty_valeur, id_joueur, nom_joueur, meilleur_score);
                     return false;
                 });
