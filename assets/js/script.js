@@ -135,6 +135,12 @@
             div_grid_puzzle_game.append("<div class='puzzle_grid_piece'></div>");
         }
 
+        //Un bouton qui vide le puzzle
+        var div_retry = $("<div class='retry'></div>");
+        div_puzzle_game.append(div_retry);
+
+        div_retry.append("<input type='button' name='retry' value='Rejouer' id='retry_btn' />");
+
         var div_valid_game = $("<div class='valid'></div>");
         div_puzzle_game.append(div_valid_game);
 
@@ -165,7 +171,7 @@
         };
 
         $(div_puzzle_pieces).random();
-        
+
 
         var $el1 = $('.piece');
         var $el2 = $('.puzzle_grid_piece');
@@ -173,6 +179,7 @@
 
         var essais = 0;
         var $el6 = null;
+        var progression = 0;
         var pourcentage = 100;
         $el1.on('dragstart', function(){
 
@@ -216,23 +223,59 @@
                     this.append($el6);
                     essais++;
 
-                    if (essais > tabGame[difficulty_valeur]["nbr_grid"]) {
+                    // if (index == $(vide.children[0]).attr("id")) {
+                    //   progression++;
+                    //   console.log("progression : "+progression);
+                    // }
+                    // else {
+                    //   progression = progression;
+                    // }
+                    //
+                    // if ((progression == tabGame[difficulty_valeur]["nbr_grid"]) && (index == $(vide.children[0]).attr("id"))) {
+                    //   progression = tabGame[difficulty_valeur]["nbr_grid"];
+                    //   pourcentage = 100;
+                    // }
+                    // else {
+                    //   pourcentage = (progression / tabGame[difficulty_valeur]["nbr_grid"])*100;
+                    //   console.log("pourcentage : "+pourcentage);
+                    // }
 
-                        if (pourcentage == 0) {
-                            pourcentage = 0;
-                        }
-                        else {
-                            pourcentage--;
-                        }
-                    }
+                    // if (essais < tabGame[difficulty_valeur]["nbr_grid"]) {
+                    //   if (index == $(vide.children[0]).attr("id")) {
+                    //     progression++;
+                    //     pourcentage = (progression / tabGame[difficulty_valeur]["nbr_grid"])*100;
+                    //     console.log("progression : "+progression);
+                    //     console.log("pourcentage : "+pourcentage);
+                    //   }
+                    // }
+
+                    // if ($('#puzzle-pieces').children.length == 0 ) {
+                    // // la liste de pièces est vide donc tout le puzzle est rempli
+                    //   if (($('.puzzle_grid_piece')[0].find($(vide.children[0]).attr("id"))) && (index == $(vide.children[0]).attr("id"))) {
+                    //   // ok le boug peut valider (appeler la fonction permettant de le faire j'imagine)
+                    //   console.log("GG WP !");
+                    //   }
+                    //   else {
+                    //   // le boug a fait des erreurs
+                    //   console.log("échec");
+                    //   }
+                    // }
+                    // else {
+                    //   console.log("t'as oublié des pièces bro");
+                    //   // le boug doit tout placer
+                    // }
+
+                      if (essais > tabGame[difficulty_valeur]["nbr_grid"]) {
+
+                          if (pourcentage == 0) {
+                              pourcentage = 0;
+                          }
+                          else {
+                              pourcentage--;
+                          }
+                      }
                 }
-
-
-
-
             });
-
-
         }
 
         // Listener pour le bouton contenu dans le section d'id game
@@ -254,6 +297,14 @@
                 clickVerifValider(e, name_player_value, pourcentage, difficulty_valeur, id_joueur, nom_joueur, meilleur_score);
                 return false;
             }
+        });
+
+        $('#retry_btn').on('click', function(e){
+          //On efface l'espace de jeu
+            $('#game').remove();
+            // appelle la fonction clickVerifRejouer, et récupère les arguments cités
+            clickVerifRejouer(e, name_player_value, difficulty_valeur, id_joueur, nom_joueur, meilleur_score);
+            return false;
         });
     }
 
