@@ -83,16 +83,20 @@
             // appel un element du DOM avec pour id article
             var article = $('#article');
 
+            //
+            var pourcentage = 100;
+            var essais = 0;
+
             /*********************************/
 
             // création de la page de jeu
-            init_game(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score);
+            init_game(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score, pourcentage, essais);
 
         });
 
     }
 
-    function init_game(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score) {
+    function init_game(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score, pourcentage, essais) {
         // creation d'une balise "section" dans le document
         var section_game = $("<section id='game'></section>");
         // ajout de cette balise "section" dans l'element article
@@ -142,7 +146,7 @@
         /* Début du code pour les pièces */
 
         for (let i = 0; i < tabGame[difficulty_valeur]["nbr_grid"]; i++) {
-            var div_piece = $("<div class='piece' draggable='true' id="+i+" style='background : center / contain no-repeat url("+tabGame[difficulty_valeur]["files"]+i+".png);'></div>");
+            var div_piece = $("<div class='piece' placed='0' draggable='true' id="+i+" style='background : center / contain no-repeat url("+tabGame[difficulty_valeur]["files"]+i+".png);'></div>");
             div_puzzle_pieces.append(div_piece);
         }
 
@@ -165,19 +169,16 @@
         $(div_puzzle_pieces).random();
 
 
-        var $el1 = $('.piece');
-        var $el2 = $('.puzzle_grid_piece');
+        var $pieces = $('.piece');
+        var $div_of_pieces = $('.puzzle_grid_piece');
 
 
-        var essais = 0;
-        var $el6 = null;
-        var progression = 0;
-        var pourcentage = 100;
-        $el1.on('dragstart', function(){
+        var $piece_drag = null;
+        $pieces.on('dragstart', function(){
 
             $(this).attr("class", "piece");
 
-            $el6 = this;
+            $piece_drag = this;
 
             setTimeout(() => {
                 $(this).attr("class", "invisible");
@@ -185,120 +186,114 @@
 
         });
 
-        $el1.on('dragend', function(){
+        $pieces.on('dragend', function(){
             $(this).attr("class", "piece");
         });
 
 
         var index = null;
-        for (const vide of $el2) {
+        for (const div_of_pieces_puzzle of $div_of_pieces) {
 
-
-
-            $(vide).on('dragover', function(e) {
+            $(div_of_pieces_puzzle).on('dragover', function(e) {
                 e.preventDefault();
             });
 
-            $(vide).on('dragenter', function(e) {
+            $(div_of_pieces_puzzle).on('dragenter', function(e) {
                 e.preventDefault();
             });
 
 
-            $(vide).on('drop', function() {
+            $(div_of_pieces_puzzle).on('drop', function() {
 
-                index = $(vide).index();
+                index = $(div_of_pieces_puzzle).index();
 
-                if ($($el2)[index].children.length == 1) {
+                if ($($div_of_pieces)[index].children.length == 1) {
                     return false;
                 }
                 else {
-                    this.append($el6);
+                    this.append($piece_drag);
                     essais++;
 
-                    // if (index == $(vide.children[0]).attr("id")) {
-                    //   progression++;
-                    //   console.log("progression : "+progression);
-                    // }
-                    // else {
-                    //   progression = progression;
-                    // }
-                    //
-                    // if ((progression == tabGame[difficulty_valeur]["nbr_grid"]) && (index == $(vide.children[0]).attr("id"))) {
-                    //   progression = tabGame[difficulty_valeur]["nbr_grid"];
-                    //   pourcentage = 100;
-                    // }
-                    // else {
-                    //   pourcentage = (progression / tabGame[difficulty_valeur]["nbr_grid"])*100;
-                    //   console.log("pourcentage : "+pourcentage);
-                    // }
+                    if (index == $(div_of_pieces_puzzle.children[0]).attr("id")) {
 
-                    // if (essais < tabGame[difficulty_valeur]["nbr_grid"]) {
-                    //   if (index == $(vide.children[0]).attr("id")) {
-                    //     progression++;
-                    //     pourcentage = (progression / tabGame[difficulty_valeur]["nbr_grid"])*100;
-                    //     console.log("progression : "+progression);
-                    //     console.log("pourcentage : "+pourcentage);
-                    //   }
-                    // }
+                        $(div_of_pieces_puzzle.children[0]).attr("placed", 1);
+                    }
+                                        
+                    if (index != $(div_of_pieces_puzzle.children[0]).attr("id")) {
 
-                    // if ($('#puzzle-pieces').children.length == 0 ) {
-                    // // la liste de pièces est vide donc tout le puzzle est rempli
-                    //   if (($('.puzzle_grid_piece')[0].find($(vide.children[0]).attr("id"))) && (index == $(vide.children[0]).attr("id"))) {
-                    //   // ok le boug peut valider (appeler la fonction permettant de le faire j'imagine)
-                    //   console.log("GG WP !");
-                    //   }
-                    //   else {
-                    //   // le boug a fait des erreurs
-                    //   console.log("échec");
-                    //   }
-                    // }
-                    // else {
-                    //   console.log("t'as oublié des pièces bro");
-                    //   // le boug doit tout placer
-                    // }
+                        $(div_of_pieces_puzzle.children[0]).attr("placed", 0);
 
-                      if (essais > tabGame[difficulty_valeur]["nbr_grid"]) {
+                    }
+                    
+                    // calcul du nombre de tentatives placées dans la variable "pourcentage"
+                    if (essais > tabGame[difficulty_valeur]["nbr_grid"]) {
 
-                          if (pourcentage == 0) {
-                              pourcentage = 0;
-                          }
-                          else {
-                              pourcentage--;
-                          }
-                      }
+                        if (pourcentage == 0) {
+                            pourcentage = 0;
+                        }
+                        else {
+                            pourcentage--;
+                        }
+                    }
                 }
             });
         }
 
         // Listener pour le bouton contenu dans le section d'id game
         $('#puzzle_validation_btn').on('click', function(e){
-            // si le score est un nouveau record on le retient et une requête AJAX sur score.php l'envoie en BDD
-            if (pourcentage > meilleur_score) {
-                meilleur_score = pourcentage;
-                $.ajax({
-                    type: 'POST',
-                    url: 'assets/php/score.php',
-                    data: {id_joueur: id_joueur, meilleur_score: JSON.stringify(meilleur_score)},
-                    dataType: 'json'
-                }).always(function() {
+            var total_placed = 0
+
+            // parcour le 
+            for (const pieces_puzzle of $pieces) {
+                var placed = parseInt($(pieces_puzzle).attr("placed"));
+                total_placed = total_placed + placed;
+            }
+
+            if (total_placed == tabGame[difficulty_valeur]["nbr_grid"]) {
+                // si le score est un nouveau record on le retient et une requête AJAX sur score.php l'envoie en BDD
+                if (pourcentage > meilleur_score) {
+                    meilleur_score = pourcentage;
+                    $.ajax({
+                        type: 'POST',
+                        url: 'assets/php/score.php',
+                        data: {id_joueur: id_joueur, meilleur_score: JSON.stringify(meilleur_score)},
+                        dataType: 'json'
+                    }).always(function() {
+                        clickVerifValider(e, name_player_value, pourcentage, difficulty_valeur, id_joueur, nom_joueur, meilleur_score);
+                        return false;
+                    });
+                } else {
+                    // fonction au moment où le bouton est cliqué
                     clickVerifValider(e, name_player_value, pourcentage, difficulty_valeur, id_joueur, nom_joueur, meilleur_score);
                     return false;
-                });
-            } else {
-                // fonction au moment où le bouton est cliqué
-                clickVerifValider(e, name_player_value, pourcentage, difficulty_valeur, id_joueur, nom_joueur, meilleur_score);
-                return false;
+                }
+            }
+            else {
+                $('#puzzle_validation_btn').blur();
             }
         });
 
-        $('#retry_btn').on('click', function(e){
-          //On efface l'espace de jeu
-            $('#game').remove();
-            // appelle la fonction clickVerifRejouer, et récupère les arguments cités
-            clickVerifRejouer(e, name_player_value, difficulty_valeur, id_joueur, nom_joueur, meilleur_score);
+        // bonton re
+        $('#retry_btn').on('click', function(e){            
+            // appelle la fonction clickVerifRetry, et récupère les arguments cités
+            clickVerifRetry(e, name_player_value, difficulty_valeur, id_joueur, nom_joueur, meilleur_score, pourcentage, essais);
             return false;
         });
     }
+
+    function clickVerifRetry(e, name_player_value, difficulty_valeur, id_joueur, nom_joueur, meilleur_score, pourcentage, essais){
+        e.preventDefault();
+
+        // appel un element du DOM avec pour id article
+        var article = $('#article');
+
+        //On efface l'espace de jeu
+        $('#game').remove();
+
+        // création de la page de jeu
+        init_game(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score, pourcentage, essais);
+    }
+
 
 
 
@@ -383,7 +378,9 @@
     function clickVerifRejouer(e, name_player_value, difficulty_valeur, id_joueur, nom_joueur, meilleur_score){
         e.preventDefault();
 
-        // /*********************************/
+        var pourcentage = 100;
+        var essais = 0;
+
         // appel un element du DOM avec pour id article
         var article = $('#article');
 
@@ -391,7 +388,7 @@
         $('#results').remove();
 
         // création de la page de jeu
-        init_game(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score);
+        init_game(name_player_value, difficulty_valeur, article, id_joueur, nom_joueur, meilleur_score, pourcentage, essais);
     }
 
 });
