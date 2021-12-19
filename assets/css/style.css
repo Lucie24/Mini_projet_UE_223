@@ -44,9 +44,10 @@ img
 
 .logo
 {
-  width : 40%;
-  height : auto;
-  margin : 4rem auto;
+  width : auto;
+  height : 15vh;
+  min-height: 5rem;
+  margin : 5vh auto;
   box-shadow : -10px -10px 25px -5px #000000,
                 10px 10px 25px -5px #000000;
   border-radius : 15px;
@@ -61,11 +62,8 @@ img
 {
   display : flex;
   flex-direction : column;
-  position : absolute;
-  top : 50%;
-  left : 50%;
-  transform : translate(-50%, -50%);
-  padding : 3rem 6rem;
+  padding : 3vh 6vw;
+  min-width: 20rem;
   background : rgba(234,210,190,255);
   border-radius : 15px;
   box-shadow :inset 10px 10px 5px -5px #C6B298,
@@ -191,10 +189,8 @@ input:focus, select:focus
 .puzzle {
   display : flex;
   flex-direction : column;
-  position : absolute;
-  top : 50%;
-  left : 50%;
-  transform : translate(-50%, -50%);
+  margin: auto;
+  width: 35rem;
   padding : 3rem 6rem;
   background : rgba(234,210,190,255);
   border-radius : 15px;
