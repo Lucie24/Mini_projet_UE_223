@@ -113,7 +113,7 @@
         var header_game = $("<header id='header_game'></header>");
         section_game.append(header_game);
 
-        header_game.append("<h1>À vous de jouer "+name_player_value+" !</h1>");
+        header_game.append("<h1>À vous de jouer "+name_player_value+" !<br>Votre nombre de coup influencera votre score !</h1>");
 
         var div_puzzle_game = $("<div class='puzzle'></div>");
         section_game.append(div_puzzle_game);
