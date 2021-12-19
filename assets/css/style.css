@@ -90,23 +90,28 @@ img
   font-weight : bold;
 }
 
-.id_player_form_label, .btn, #header_game > h1, #header_win > h1, .leaderboard_title
+.id_player_form_label, .btn, #header_game > h1, #header_win > h1, #error, .leaderboard_title
 {
   font-family : 'Luckiest Guy', cursive;
 }
 
-.id_player_form_label, #header_game > h1, #header_win > h1
+.id_player_form_label, #header_game > h1, #header_win > h1, #error
 {
   font-size : 1.25rem;
   letter-spacing : 1.25px;
 }
 
-#header_game > h1, #header_win > h1
+#header_game > h1, #header_win > h1, #error
 {
   text-align : center;
   color : white;
   padding : 2rem;
   font-size : 2rem;
+}
+
+#error{
+  font-size: 1.25rem;
+  padding-bottom: 0rem;
 }
 
 .btn

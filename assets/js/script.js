@@ -270,6 +270,8 @@
             }
             else {
                 $('#puzzle_validation_btn').blur();
+                var error = $("<h1 id='error'>Le puzzle est imcomplet ou incorrect.</h1>");
+                div_puzzle_game.append(error);
             }
         });
 
