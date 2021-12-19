@@ -112,6 +112,7 @@ img
 #error{
   font-size: 1.25rem;
   padding-bottom: 0rem;
+  font-style : italic;
 }
 
 .btn
