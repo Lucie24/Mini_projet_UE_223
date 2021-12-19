@@ -62,7 +62,7 @@ img
 {
   display : flex;
   flex-direction : column;
-  padding : 3vh 6vw;
+  padding : 3rem 6rem;
   min-width: 20rem;
   background : rgba(234,210,190,255);
   border-radius : 15px;
