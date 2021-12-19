@@ -88,23 +88,29 @@ img
   font-weight : bold;
 }
 
-.id_player_form_label, .btn, #header_game > h1, #header_win > h1, .leaderboard_title
+.id_player_form_label, .btn, #header_game > h1, #header_win > h1, #error, .leaderboard_title
 {
   font-family : 'Luckiest Guy', cursive;
 }
 
-.id_player_form_label, #header_game > h1, #header_win > h1
+.id_player_form_label, #header_game > h1, #header_win > h1, #error
 {
   font-size : 1.25rem;
   letter-spacing : 1.25px;
 }
 
-#header_game > h1, #header_win > h1
+#header_game > h1, #header_win > h1, #error
 {
   text-align : center;
   color : white;
   padding : 2rem;
   font-size : 2rem;
+}
+
+#error{
+  font-size: 1.25rem;
+  padding-bottom: 0rem;
+  font-style : italic;
 }
 
 .btn
@@ -148,7 +154,7 @@ img
   box-shadow : 0px 10px 15px -5px #C6B298, inset 0px 10px 15px -5px rgba(198,178,152,0.5);
 }
 
-.btn:focus
+#id_player_form_submit:focus, #retry_btn:focus, #puzzle_validation_btn:focus, #menu_btn:focus
 {
   border-radius : 15px;
   box-shadow : inset 0px 10px 15px -5px #C6B298, 0px 10px 15px -5px rgba(198,178,152,0.5);
