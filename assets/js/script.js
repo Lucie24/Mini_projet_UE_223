@@ -133,10 +133,10 @@
 
         div_retry.append("<input type='button' name='retry' value='Vider' id='retry_btn' class='btn' />");
 
+        //Un bouton qui valide le puzzle
         var div_valid_game = $("<div class='valid'></div>");
         div_buttons.append(div_valid_game);
 
-        // le bouton de validation du puzzle
         div_valid_game.append("<input type='button' name='valid' value='Valider' id='puzzle_validation_btn' class='btn' />");
 
         /* Début du code pour les pièces */
@@ -335,7 +335,9 @@
         var div_container = $("<div class='container'></div>");
         section_resultat.append(div_container);
 
-        div_container.append("<p>Score : "+pourcentage+"%<br/>Meilleur score : "+meilleur_score+"%<br/><br/>Leaderboard :</p>");
+        div_container.append("<p class = 'score'>Score : <span class = 'bold'>"+pourcentage+"%</span><br/>Meilleur score : <span class = 'bold'>"+meilleur_score+"% </span></p>");
+
+        div_container.append("<h1 class = 'leaderboard_title'>Leaderboard</h1>")
 
         var leaderboard = $("<table class='leaderboard'><thead><tr><th>ID</th><th>Nom</th><th>Meilleur score</th></thead></table>");
         div_container.append(leaderboard);

@@ -29,6 +29,11 @@ img
   height : 100%;
 }
 
+.bold
+{
+  font-weight : bold;
+}
+
 #home
 {
   display : flex;
@@ -85,7 +90,7 @@ img
   font-weight : bold;
 }
 
-.id_player_form_label, .btn, #header_game > h1, #header_win > h1
+.id_player_form_label, .btn, #header_game > h1, #header_win > h1, .leaderboard_title
 {
   font-family : 'Luckiest Guy', cursive;
 }
@@ -305,6 +310,20 @@ input:focus, select:focus
   margin : 24px 0 -24px 0;
 }
 
-.cell {
-  text-align: center;
+/*Leaderboard*/
+
+.score, .leaderboard_title, .leaderboard, .cell, th
+{
+  text-align : center;
+}
+
+.leaderboard_title
+{
+  padding : 24px 0;
+}
+
+.leaderboard, .cell, th
+{
+  border : 1px solid black;
+  border-collapse : collapse;
 }
