@@ -22,17 +22,6 @@
         }
     }
 
-    // if ($("#difficulty option:selected").length)
-    // {
-    //   $("#difficulty").blur();
-    // }
-    //
-    // // $("#difficulty").click(function()
-    // // {
-    // //   //$(this).style.borderRadius = "15px 15px 0 0";
-    // //   $("#difficulty").css({border-radius : "25px"});
-    // // });
-
     const Reg_exp = /^([A-Za-zÀ-ÖØ-öø-ÿ]{3,25})$/;
 
     // Listener pour le submit du formulaire contenu dans le section d'id home
@@ -135,17 +124,20 @@
             div_grid_puzzle_game.append("<div class='puzzle_grid_piece'></div>");
         }
 
+        var div_buttons = $("<div class='buttons'></div>");
+        $(".puzzle").append(div_buttons);
+
         //Un bouton qui vide le puzzle
         var div_retry = $("<div class='retry'></div>");
-        div_puzzle_game.append(div_retry);
+        div_buttons.append(div_retry);
 
-        div_retry.append("<input type='button' name='retry' value='Rejouer' id='retry_btn' />");
+        div_retry.append("<input type='button' name='retry' value='Vider' id='retry_btn' class='btn' />");
 
         var div_valid_game = $("<div class='valid'></div>");
-        div_puzzle_game.append(div_valid_game);
+        div_buttons.append(div_valid_game);
 
         // le bouton de validation du puzzle
-        div_valid_game.append("<input type='button' name='valid' value='Valider' id='puzzle_validation_btn' />");
+        div_valid_game.append("<input type='button' name='valid' value='Valider' id='puzzle_validation_btn' class='btn' />");
 
         /* Début du code pour les pièces */
 
@@ -368,7 +360,7 @@
         var div_retry = $("<div class='retry'></div>");
         div_buttons.append(div_retry);
 
-        div_retry.append("<input type='button' name='retry' value='Rejouer' id='retry_btn' />");
+        div_retry.append("<input type='button' name='retry' value='Rejouer' id='retry_btn' class='btn' />");
 
         var div_menu = $("<div class='menu'></div>");
         div_buttons.append(div_menu);
@@ -376,7 +368,7 @@
         var a_link = $("<a href='index.php'></a>");
         div_menu.append(a_link);
 
-        a_link.append("<input type='button' name='valid' value='Accueil' id='menu_btn'/>");
+        a_link.append("<input type='button' name='valid' value='Accueil' id='menu_btn' class='btn'/>");
 
         // Listener pour le bouton contenu dans le section d'id results
         $('#retry_btn').on('click', function(e){

@@ -21,7 +21,7 @@
 
         <section id="home">
           <header id="header_home">
-            <img class="logo" src="assets\img\puzzle\logo.png" alt="Puzzle Game">
+            <img class="logo" id="logo" src="assets\img\puzzle\logo.png" alt="Puzzle Game">
           </header>
           <form class="id_player">
             <label for="name_player" class="id_player_form_label">Nom du joueur</label>
@@ -36,7 +36,7 @@
             </select>
 
             <div class="start">
-              <input type="submit" value="Jouer" id="id_player_form_submit">
+              <input type="submit" value="Jouer" id="id_player_form_submit" class="btn">
             </div>
           </form>
         </section>
